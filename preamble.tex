@@ -1,0 +1,263 @@
+%\documentclass[a4paper,12pt,oneside,pdflatex,italian,final,twocolumn]{article}
+%\documentclass[a4paper,11pt,oneside,openany]{memoir} 	% Openright aabner kapitler paa hoejresider (openany = vilkaarlig/begge)
+
+
+%%%% PAKKER %%%%
+% ¤¤ Oversaettelse og tegnsaetning ¤¤ %
+\usepackage[utf8]{inputenc}					% Input-indkodning af tegnsaet, dvs. input fra keyboard, tegnoversigt eller andet (UTF8 = Unicode)
+\usepackage[T1]{fontenc}					% Output-indkodning af tegnsaet, dvs. printede fonte og tegn (T1 = Type 1 font med support for de fleste europaeiske sprog)
+%\usepackage[danish]{babel}					% Sproglig fremstilling af elementer (figur vs. figure, litteratur vs. bibliography osv.)
+\usepackage{csquotes}
+
+\usepackage{booktabs}
+
+\usepackage{changepage}
+
+\usepackage{ragged2e,anyfontsize}			% Justering af elementer
+\usepackage{lastpage}
+
+% ¤¤ Figurer og tabeller (floats) ¤¤ %
+\usepackage{graphicx} 						% Inkludering af eksterne billeder (JPG, PNG, PDF)
+\usepackage{multirow}
+\usepackage{multicol}% Fletning af raekker og kolonner (\multicolumn og \multirow)
+\usepackage{colortbl} 						% Farver i tabeller (fx \columncolor, \rowcolor og \cellcolor)
+\usepackage[dvipsnames, svgnames, table]{xcolor}        		% Definer farver med \definecolor. Se mere: http://en.wikibooks.org/wiki/LaTeX/Colors
+\usepackage{flafter}						% Soerger for, at floats ikke optraeder i teksten foer deres reference
+\usepackage{float}							% Muliggoer eksakt placering af floats, fx \begin{figure}[H]
+\let\newfloat\relax 						% Justering mellem float-pakken og memoir
+%\usepackage{eso-pic}						% Tilfoej billedekommandoer paa hver side
+\usepackage{wrapfig}						% Indsaettelse af figurer omsvoebt af tekst 
+%\usepackage{multicol}         	        	% Muliggoer tekst i spalter
+%\usepackage{rotating}						% Rotation af tekst med \begin{sideways}...\end{sideways}
+\usepackage{gensymb}
+% nogle andre ting til tabeller
+\renewcommand{\arraystretch}{1.5}           % Højde for hver celle
+\setlength{\arrayrulewidth}{0.5mm}          % Tykkelse af streger i tabeller
+\arrayrulecolor[HTML]{9B9B9B}               % Farve til streger i tabeller
+
+% nogle ting til grafer
+\usepackage{pgfplots}                       % Til at plotte grafer, Tikz baseret
+    \pgfplotsset{width=10cm,compat=1.9}
+\usepackage{tikz}
+\usetikzlibrary{fit,backgrounds}
+\usetikzlibrary{calc}
+\usetikzlibrary{positioning}
+\usetikzlibrary{shapes.geometric}
+
+% ¤¤ Matematik mm. ¤¤
+\usepackage{amsmath,amssymb,stmaryrd} 		% Avancerede matematik-udvidelser
+\usepackage{mathtools}% Andre matematik- og tegnudvidelser
+\usepackage{bm} %Matematisk fed skrift
+\usepackage{mathrsfs}
+\usepackage{textcomp}                 		% Symbol-udvidelser (fx promille-tegn med \textperthousand)
+\usepackage{siunitx}						% Flot og konsistent praesentation af tal og enheder med \si{enhed} og \SI{tal}{enhed}
+\sisetup{output-decimal-marker = {.}}		% Opsaetning af \SI og decimalseparator
+\sisetup{group-separator = \ }
+\sisetup{output-exponent-marker=\ensuremath{\mathrm{E}}}
+\DeclareSIUnit{\flow}{flow}
+\DeclareSIUnit{\frame}{frame}
+\DeclareSIUnit{\degree}{deg}
+\DeclareSIUnit{\baud}{Baud}
+
+
+\usepackage{icomma}                         % Komma som decimalseperator fix
+\usepackage{makecell}
+
+
+% ¤¤ Referencer og kilder ¤¤ %
+\usepackage{varioref}				% Muliggoer bl.a. krydshenvisninger med sidetal (\vref)
+						% Udvidelse med naturvidenskabelige citationsmodeller, herunder Harvard-modellen
+
+
+% ¤¤ Misc. ¤¤ %
+\usepackage{listings}						
+% Placer kildekode i dokumentet med \begin{lstlisting}...\end{lstlisting}
+\usepackage{lipsum}							
+% Dummy tekst med fx \lipsum[2]
+\usepackage[shortlabels]{enumitem}			
+% Muliggoer enkelt konfiguration af lister (se \setlist nedenfor)
+\usepackage{pdfpages}						
+% Goer det muligt at inkludere pdf-dokumenter med kommandoen \includepdf[pages={x-y}]{fil.pdf}	
+\pdfoptionpdfminorversion=6					
+% Muliggoer inkludering af pdf-dokumenter af version 1.6 og hoejere
+%\pretolerance=2500 							
+% Justering af afstand mellem ord (hoejt tal, mindre orddeling og mere luft mellem ord)
+
+% Kommentarer og rettelser med \fxnote. Med 'final' i stedet for 'draft' udloeser hver note en error i den faerdige rapport.
+\usepackage[footnote,draft,danish,silent,nomargin]{fixme}		
+
+\usepackage{subcaption}
+
+\usepackage{longtable} %makes it so tables can fill multiple pages
+
+%%%% BRUGERDEFINEREDE INDSTILLINGER %%%%
+
+% ¤¤ Marginer ¤¤ %
+%\setlrmarginsandblock{3cm}{3cm}{*}		% \setlrmarginsandblock{Indbinding}{Kant}{Ratio}
+%\setlrmarginsandblock{2.5cm}{2.5cm}{*}		%
+%\setulmarginsandblock{3cm}{3.0cm}{*}		% \setulmarginsandblock{Top}{Bund}{Ratio}
+%\checkandfixthelayout 						
+% Oversaetter vaerdier til brug for andre pakker
+%	¤¤ Afsnitsformatering ¤¤ %
+\setlength{\parindent}{0mm}           		
+% Stoerrelse af indryk
+\setlength{\parskip}{3mm}          			
+% Afstand mellem afsnit ved brug af double Enter
+\linespread{1,1}							
+% Linjeafstand
+
+% ¤¤ Litteraturlisten ¤¤ %
+
+\usepackage[
+%  disable, %turn off todonotes
+  colorinlistoftodos, %enable a coloured square in the list of todos
+  textwidth=\marginparwidth, %set the width of the todonotes
+  textsize=scriptsize, %size of the text in the todonotes
+  ]{todonotes}
+
+
+
+% ¤¤ Dybde af overskrifter ¤¤ %
+%\setsecnumdepth{subsection}		 			
+% Dybden af nummerede overkrifter (part/chapter/section/subsection)
+% Dybden af overskrifter vist i indholdsfortegnelsen
+
+
+% ¤¤ Lister ¤¤ %
+\setlist{
+  topsep=0pt,								
+  % Vertikal afstand mellem tekst og listen
+  itemsep=-1ex,								
+  % Vertikal afstand mellem items
+} 
+
+% ¤¤ Visuelle referencer ¤¤ %
+\usepackage[colorlinks]{hyperref}			
+% Danner klikbare referencer (hyperlinks) i dokumentet
+\hypersetup{colorlinks = true,				
+% Opsaetning af farvede hyperlinks (interne links, citeringer og URL)
+    linkcolor = black,
+    citecolor = black,
+    urlcolor = black
+}
+
+
+% ¤¤ Opsaetning af figur- og tabeltekst ¤¤ %
+%\captionnamefont{\small\bfseries\itshape}	
+% Opsaetning af tekstdelen ('Figur' eller 'Tabel')
+%\captiontitlefont{\small}					
+% Opsaetning af nummerering
+%\captiondelim{. }							
+% Seperator mellem nummerering og figurtekst
+%\captionstyle{\centering}					
+% Justering/placering af figurteksten (centreret = \centering, venstrejusteret = \raggedright)
+
+%\captionwidth{1\linewidth}					
+% Bredden af figurteksten
+%\hangcaption								
+% Venstrejusterer fler-linjers figurtekst under hinanden
+\setlength{\belowcaptionskip}{0pt}			
+% Afstand under figurteksten
+
+% ¤¤ Opsaetning af listings ¤¤ %
+%Se særskillet dokument. 
+%\include{Listings}
+
+
+
+
+% ¤¤ Kapiteludssende ¤¤ %
+\definecolor{numbercolor}{gray}{0.7}		
+% Definerer en farve til brug til kapiteludseende
+\newif\ifchapternonum
+
+						
+% Valg af kapiteludseende - Google 'memoir chapter styles' for alternativer
+
+% ¤¤ Sidehoved/sidefod ¤¤ %
+%\makepagestyle{Uni}							
+
+%\nouppercaseheads											
+% % Ingen Caps oenskes
+
+		
+
+
+
+%%%% EGNE KOMMANDOER %%%%
+% ¤¤ Billede hack ¤¤ %									
+% Indsaet figurer nemt med \figur{Stoerrelse}{Fil}{Figurtekst}{Label}
+\newcommand{\figur}[4]{
+		\begin{figure}[H] \centering
+			\includegraphics[width=#1\textwidth]{billeder/#2}
+			\caption{#3}
+			\label{#4}
+		\end{figure} 
+}
+
+% ¤¤ Specielle tegn ¤¤ %
+%\newcommand{\dec}{$^{\circ}$}							
+% '\dec' returnerer et gradtegn (husk $$ udenfor aligns)
+
+%\newcommand{\decC}{^{\circ}\text{C}}					
+% '\decC' returnerer et gradtegn + 'C' (husk $$ udenfor aligns)
+
+%\newcommand{\m}{\cdot}									
+% '\m' returnerer et gangetegn
+
+% Flueben og kryds %
+\usepackage{amssymb}% http://ctan.org/pkg/amssymb
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+
+%%%% ORDDELING %%%%
+\hyphenation{In-te-res-se e-le-ment}
+
+%New colors defined below
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.95}
+\definecolor{airforceblue}{rgb}{0.36, 0.54, 0.66}
+\definecolor{awesome}{rgb}{1.0, 0.13, 0.32}
+\definecolor{azure(colorwheel)}{rgb}{0.0, 0.5, 1.0}
+\definecolor{emerald}{rgb}{0.31, 0.78, 0.47}
+\definecolor{gray-asparagus}{rgb}{0.27, 0.35, 0.27}
+\definecolor{dimgray}{rgb}{0.6, 0.6, 0.6}
+\definecolor{tableGray1}{rgb}{0.9, 0.9, 0.9}
+\definecolor{tableGray2}{rgb}{0.95, 0.95, 0.95}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+
+\makeatletter
+\providecommand\add@text{}
+\newcommand\tagaddtext[1]{%
+  \gdef\add@text{#1\gdef\add@text{}}}% 
+\renewcommand\tagform@[1]{%
+  \maketag@@@{\llap{\add@text\quad}(\ignorespaces#1\unskip\@@italiccorr)}%
+}
+\makeatother
+
+\usepackage{graphicx,wrapfig,lipsum}
+
+\usepackage{enumitem}
+
+\usepackage{titlesec}
+
+\titleformat{\subsection}
+  {\normalfont\normalsize\bfseries\color{Black}}
+  {\thesubsection}
+  {1em}
+  {}
+  [{\titlerule[0.8pt]}]
+
+%Definere hvordan listings er sat op
+\lstdefinestyle{mystyle}{
+  backgroundcolor=\color{backcolour},
+  captionpos=b,                    
+}
+\lstset{style=mystyle}
+\renewcommand{\lstlistingname}{Code snippet}

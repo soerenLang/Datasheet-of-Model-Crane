@@ -1,0 +1,80 @@
+
+\definecolor{commentGreen}{RGB}{34,139,24}
+\definecolor{stringPurple}{RGB}{208,76,239}
+\colorlet{keyword}{blue!100!black!80}
+\colorlet{comment}{green!60!black!100}
+
+
+
+\lstset{language=Matlab,					% Sprog
+	basicstyle=\ttfamily\scriptsize,		% Opsaetning af teksten
+	keywords={for,if,while,else,elseif,		% Noegleord at fremhaeve
+			  end,break,return,case,
+			  switch,function},
+	keywordstyle=\color{blue},				% Opsaetning af noegleord
+	commentstyle=\color{commentGreen},		% Opsaetning af kommentarer
+	stringstyle=\color{stringPurple},		% Opsaetning af strenge
+	showstringspaces=false,					% Mellemrum i strenge enten vist eller blanke
+	numbers=left, numberstyle=\tiny,		% Linjenumre
+	extendedchars=true, 					% Tillader specielle karakterer
+	columns=flexible,						% Kolonnejustering
+	breaklines, breakatwhitespace=true,		% Bryd lange linjer
+}
+
+\lstdefinelanguage{VHDL}{
+    %alt blåt
+  morekeywords=[1]{
+    library,use,all,entity,is,port,in,out,end,architecture,of,
+    begin,and, AND, or, OR, Not, not, NOT, downto,ALL, PORT, to, process, if, elsif, else, signal, Integer, loop, for, return, function, variable, Component, case, when, others, then, null 
+  },
+  %alt lyserødt (bordeaux rød?)
+  morekeywords=[2]{
+    STD_LOGIC_VECTOR,STD_LOGIC,IEEE,STD_LOGIC_1164,
+    NUMERIC_STD,STD_LOGIC_ARITH,STD_LOGIC_UNSIGNED,std_logic_vector,
+    std_logic, STD_LOGIC_1164, numeric_std,to_unsigned,andOrVectors
+  },
+  morecomment=[l]--,
+  morecomment=[s][\color{codegray}]{"}{"}
+}
+\lstset{language=VHDL,texcl=true}
+
+\lstdefinestyle{vhdl}{
+  language     = VHDL,
+  basicstyle   = \footnotesize \ttfamily,
+  keywordstyle = [1]\color{keyword}\bfseries,
+  keywordstyle = [2]\color{stringPurple}\bfseries,
+  commentstyle = \color{comment},
+  tabsize=3		                   % sets default tabsize to 2 spaces
+}
+
+
+\definecolor{Python:commentGreen}{RGB}{34,139,24}
+\definecolor{Python:stringPurple}{RGB}{208,76,239}
+\colorlet{Python:keyword}{blue!100!black!80}
+\colorlet{Python:comment}{green!60!black!100}
+
+
+
+\lstdefinelanguage{python}{
+    %alt blåt
+  morekeywords=[1]{
+    access,and,break,class,continue,def,del,elif,else,except,exec,finally,for,from,global,if,import,in,is,lambda,not,or,pass,print,raise,return,try,while
+  },
+  %alt lyserødt (bordeaux rød?)
+  morekeywords=[2]{
+    abs,all,any,basestring,bin,bool,bytearray,callable,chr,classmethod,cmp,compile,complex,delattr,dict,dir,divmod,enumerate,eval,execfile,file,filter,float,format,frozenset,getattr,globals,hasattr,hash,help,hex,id,input,int,isinstance,issubclass,iter,len,list,locals,long,map,max,memoryview,min,next,object,oct,open,ord,pow,property,range,raw_input,reduce,reload,repr,reversed,round,set,setattr,slice,sorted,staticmethod,str,sum,super,tuple,type,unichr,unicode,vars,xrange,zip,apply,buffer,coerce,intern
+  },
+  morecomment=[l]\#,
+  morecomment=[s][\color{codegray}]{"}{"}
+}
+\lstset{language=python,texcl=true}
+
+
+\lstdefinestyle{python}{
+  language     = Python,
+  basicstyle   = \footnotesize \ttfamily,
+  keywordstyle = [1]\color{Python:keyword}\bfseries,
+  keywordstyle = [2]\color{Python:stringPurple}\bfseries,
+  commentstyle = \color{Python:comment},
+  tabsize=3
+}

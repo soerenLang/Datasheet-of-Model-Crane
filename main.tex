@@ -1,0 +1,84 @@
+\documentclass[a4paper,12pt,oneside,pdflatex,italian,final,twocolumn]{article}
+
+\input{preamble}
+\input{kommandoer}
+
+\usepackage[utf8]{inputenc}
+\usepackage{parallel}
+\usepackage{siunitx}
+\usepackage{booktabs}
+\usepackage{fancyhdr}
+
+\usepackage[export]{adjustbox}
+\usepackage[margin=0.5in]{geometry}
+\addtolength{\topmargin}{0in}
+
+\usepackage{libertine}
+\renewcommand*\familydefault{\sfdefault}  %% Only if the base font of the document is to be sans serif
+\usepackage[T1]{fontenc}
+
+\title{CE630}
+\author{arsphotographika }
+\date{April 2019}
+
+\begin{document}
+
+\pagestyle{fancy}
+
+\lhead{Aalborg university}
+\chead {\today}
+\rhead{Datasheet model crane}
+
+
+\onecolumn
+
+\begin{figure}[H]
+\begin{minipage}{0.47\textwidth}
+\centering
+\includegraphics[width=.7\textwidth,left,]{pictures/logo.png}
+
+\end{minipage}
+\hfill
+\begin{minipage}{0.47\textwidth}
+\raggedleft
+\textbf{Contact information}\\
+Group CE630 spring 2022
+
+Søren Lang,
+slan19@student.aau.dk\\
+Jakob Gammelgaard,
+jgha19@student.aau.dk\\
+Simon Johansen,
+sjohan19@student.aau.dk\\
+Lau Laukage,
+llaur19@student.aau.dk\\
+Peter Krull,
+pkrull19@student.aau.dk\\
+Andreas Ravnsbæk,
+aravns19@student.aau.dk\\
+
+\end{minipage}
+\end{figure}
+
+{\huge\textbf{Datasheet of Model Crane}}
+
+\begin{figure}[H]
+\begin{minipage}{0.47\textwidth}
+\section{Overview}
+The purpose of this datasheet is document the functionalities, hardware and software of the model crane found in the Control Lab department of Aalborg University, Frederik Bajers vej 7C (FRB7C 2-104). The wiring of the crane will be documented, as well as a controller developed to control the crane manually. This datasheet is developed as a part of the bachelor project \textit{Automated crane control} on faculty of Electronic Systems by group CE630, spring 2022. 
+\end{minipage}
+\hfill
+\begin{minipage}{0.47\textwidth}
+\centering
+\includegraphics[width=1\textwidth,right]{pictures/cranePik.jpg}
+\end{minipage}
+\end{figure}
+\input{Sections/MotorDriver}
+\input{Sections/Wiring}
+\input{Sections/Head}
+\input{Sections/ControllerHardware}
+\input{Sections/ControllerSoftware}
+\end{document}
+
+
+
