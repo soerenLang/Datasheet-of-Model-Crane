@@ -1,4 +1,12 @@
 \section{Motor driver}
-Escon 50/5 motor drivers are used on the x- and y-axis. These are controlled by pulling the the reset pin high, thereby enabling the motor drivers. The speed of the motors are controlled by a PWM signal with a frequency between \SI{5}{kHz} and \SI{10}{kHz} and a duty cycle between \SI{10}{\percent} and \SI{90}{\percent}. A duty cycle below \SI{50}{\percent} will result in the trolley moving to the left and a duty cycle above \SI{50}{\percent} will result in the trolley moving to the right. The motor drivers has logic 0 below \SI{1}{\volt}, a logic 1 above \SI{2.4}{\volt} and a maximal input voltage of \SI{36}{\volt}.The motor drivers can be reconfigured in software using the USB-B connectors on the front panel if another configuration is needed. More information about the motor driver isfound on the following link:
+Escon 50/5 motor drivers are used on the x- and y-axis. Each driver is controlled by two input pins, \textit{Digital Input 1} (PWM-signal), and \textit{Digital Input 2} (Enable driver). The drivers are current controllers, regulating the torque the motors supply. The output current is based on the PWM-signal with a duty cycle between \SIrange{10}{90}{\percent}. From \SIrange{10}{50}{\percent} duty cycle the driver supplies current in one direction, and from \SIrange{50}{90}{\percent} in the other direction. The PWM-signal must have a frequency between \SIrange{10}{5e3}{\hertz}, with a logic 0 below \SI{1}{\volt} and a logic 1 above \SI{2.4}{\volt}.
+
+\textit{Digital Input 2} is a boolean value which enables the motors. A logic 1 is represented by a voltage above \SI{2.4}{\volt}, a logic 0 is represented by a voltage below \SI{1}{\volt}.
+
+%These are controlled by pulling the the enable pin high, thereby enabling the motor drivers. The speed of the motors are controlled by a PWM signal with a frequency between \SI{5}{kHz} and \SI{10}{kHz} and a duty cycle between \SI{10}{\percent} and \SI{90}{\percent}. A duty cycle below \SI{50}{\percent} will result in the trolley moving to the left and a duty cycle above \SI{50}{\percent} will result in the trolley moving to the right. 
+
+%The motor drivers has logic 0 below \SI{1}{\volt}, a logic 1 above \SI{2.4}{\volt} and a maximal input voltage of \SI{36}{\volt}. 
+
+The motor drivers can be reconfigured in software using the USB-B connectors on the front panel if another configuration is needed. More information about the motor driver is found via the following link:
 
 \url{https://www.maxongroup.com/medias/sys_master/root/8834332262430/409510-ESCON-50-5-Hardware-Reference-En.pdf}
